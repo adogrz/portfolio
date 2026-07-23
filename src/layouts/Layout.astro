@@ -22,9 +22,23 @@ const person = {
   email: `mailto:${profile.email}`,
   address: {
     "@type": "PostalAddress",
-    addressLocality: "San Salvador",
+    addressLocality: "Santo Tomás",
+    addressRegion: "San Salvador",
     addressCountry: "SV",
   },
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "Universidad de El Salvador",
+  },
+  knowsAbout: [
+    "Java",
+    "Spring Boot",
+    "APIs REST",
+    "Docker",
+    "Linux",
+    "PostgreSQL",
+    "Desarrollo web",
+  ],
   sameAs: [profile.urls.github, profile.urls.linkedIn],
 };
 ---

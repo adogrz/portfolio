@@ -8,8 +8,10 @@ import WaveDivider from "@/components/WaveDivider.astro";
 import { profile } from "@/data/profile";
 import Layout from "@/layouts/Layout.astro";
 
-const title = `${profile.role} en El Salvador | ${profile.name}`;
-const description = `Portfolio de ${profile.name}, ${profile.role} en San Salvador. Experiencia creando aplicaciones web con TypeScript, React, Astro y Tailwind CSS.`;
+const title = `${profile.name} | ${profile.role}`;
+
+const description =
+  "Portafolio de Adonay Gutiérrez, desarrollador backend Java y estudiante de Ingeniería en Sistemas Informáticos en El Salvador. Experiencia práctica con Spring Boot, APIs REST, bases de datos, Docker y Linux.";
 ---
 
 <Layout {title} {description}>

@@ -1,21 +1,23 @@
 import type { ImageMetadata } from "astro";
 import type { SvgComponent } from "astro/types";
 
-import AstroLogo from "@/components/icons/technologies/Astro.astro";
-import CssLogo from "@/components/icons/technologies/Css.astro";
+import creationsImage from "@/assets/projects/creations.png";
+import elforaneoImage from "@/assets/projects/elforaneo.png";
 import DjangoLogo from "@/components/icons/technologies/Django.astro";
-import ExpressLogo from "@/components/icons/technologies/Express.astro";
-import HtmlLogo from "@/components/icons/technologies/Html.astro";
-import JavaScriptLogo from "@/components/icons/technologies/JavaScript.astro";
+import DockerLogo from "@/components/icons/technologies/Docker.astro";
+import DokployLogo from "@/components/icons/technologies/Dokploy.astro";
 import LaravelLogo from "@/components/icons/technologies/Laravel.astro";
 import NextJsLogo from "@/components/icons/technologies/NextJs.astro";
+import PostgreSQLLogo from "@/components/icons/technologies/Postgresql.astro";
+import PrismaLogo from "@/components/icons/technologies/Prisma.astro";
 import ReactLogo from "@/components/icons/technologies/React.astro";
+import RedisLogo from "@/components/icons/technologies/Redis.astro";
+import SpringLogo from "@/components/icons/technologies/Spring.astro";
+import SqlServerLogo from "@/components/icons/technologies/SqlServer.astro";
+import SupabaseLogo from "@/components/icons/technologies/Supabase.astro";
+import SwaggerLogo from "@/components/icons/technologies/Swagger.astro";
 import TailwindCssLogo from "@/components/icons/technologies/TailwindCss.astro";
 import TypeScriptLogo from "@/components/icons/technologies/TypeScript.astro";
-import VercelLogo from "@/components/icons/technologies/Vercel.astro";
-import flowbiteImage from "@/assets/projects/flowbite.webp";
-import fontsourceImage from "@/assets/projects/fontsource.webp";
-import svglImage from "@/assets/projects/svgl.webp";
 
 export interface Technology {
   name: string;
@@ -23,18 +25,21 @@ export interface Technology {
 }
 
 export const technologies = {
-  astro: { name: "Astro", logo: AstroLogo },
-  css: { name: "CSS", logo: CssLogo },
   django: { name: "Django", logo: DjangoLogo },
-  express: { name: "Express.js", logo: ExpressLogo },
-  html: { name: "HTML", logo: HtmlLogo },
-  javascript: { name: "JavaScript", logo: JavaScriptLogo },
+  docker: { name: "Docker", logo: DockerLogo },
+  dokploy: { name: "Dokploy", logo: DokployLogo },
   laravel: { name: "Laravel", logo: LaravelLogo },
   nextjs: { name: "Next.js", logo: NextJsLogo },
+  postgresql: { name: "PostgreSQL", logo: PostgreSQLLogo },
+  prisma: { name: "Prisma", logo: PrismaLogo },
   react: { name: "React", logo: ReactLogo },
+  redis: { name: "Redis", logo: RedisLogo },
+  springBoot: { name: "Spring Boot", logo: SpringLogo },
+  sqlserver: { name: "SQL Server", logo: SqlServerLogo },
+  supabase: { name: "Supabase", logo: SupabaseLogo },
+  swagger: { name: "Swagger", logo: SwaggerLogo },
   tailwind: { name: "Tailwind CSS", logo: TailwindCssLogo },
   typescript: { name: "TypeScript", logo: TypeScriptLogo },
-  vercel: { name: "Vercel", logo: VercelLogo },
 } satisfies Record<string, Technology>;
 
 interface ProjectBase {
@@ -59,66 +64,60 @@ export type Project = ImageProject | CompactProject;
 
 export const projects: Project[] = [
   {
-    title: "Flowbite",
+    title: "ElForaneo",
     description:
-      "Componente de botones para formularios, enlaces, acceso social y pagos, con múltiples estilos, colores, tamaños, degradados y sombras.",
-    deploymentUrl: "https://flowbite.com/",
-    repositoryUrl: "https://github.com/themesberg/flowbite",
-    image: flowbiteImage,
+      "Plataforma web para encontrar alojamientos verificados cerca de universidades en El Salvador.",
+    deploymentUrl: "https://elforaneo.com",
+    image: elforaneoImage,
     technologies: [
       technologies.nextjs,
       technologies.tailwind,
-      technologies.typescript,
-      technologies.laravel,
-    ],
-  },
-  {
-    title: "svgl",
-    description: "Una cuidada biblioteca de logotipos en formato SVG.",
-    deploymentUrl: "https://svgl.vercel.app/",
-    repositoryUrl: "https://github.com/pheralb/svgl",
-    image: svglImage,
-    technologies: [
-      technologies.html,
-      technologies.css,
-      technologies.javascript,
+      technologies.supabase,
       technologies.django,
-      technologies.vercel,
+      technologies.postgresql,
+      technologies.redis,
+      technologies.docker,
+      technologies.dokploy,
     ],
   },
   {
-    title: "Fontsource",
+    title: "Creations",
     description:
-      "Descarga y alojamiento propio de fuentes de código abierto en paquetes npm organizados.",
-    deploymentUrl: "https://fontsource.org/",
-    image: fontsourceImage,
-    technologies: [
-      technologies.astro,
-      technologies.react,
-      technologies.tailwind,
-      technologies.express,
-    ],
-  },
-  {
-    title: "Plantilla: Creations Web App",
-    description:
-      "Ejemplo editable de una tarjeta compacta para un proyecto centrado en el código y sin captura de pantalla.",
+      "Catálogo web de disfraces personalizados, con diseños a medida y contacto directo para realizar pedidos.",
+    deploymentUrl: "https://creations.adogrz.com",
     repositoryUrl: "https://github.com/adogrz/creations-web-app",
+    image: creationsImage,
     technologies: [
       technologies.nextjs,
       technologies.tailwind,
-      technologies.typescript,
+      technologies.prisma,
+      technologies.postgresql,
+      technologies.dokploy,
     ],
   },
   {
-    title: "CLI Tool Kit",
+    title: "Job Horizon — API REST",
     description:
-      "Herramienta de línea de comandos en TypeScript para automatización de desarrollo.",
-    repositoryUrl: "https://github.com/adogrz/cli-tool-kit",
+      "API REST para una bolsa de trabajo que gestiona usuarios, empresas, ofertas laborales y postulaciones.",
+    repositoryUrl: "https://github.com/adogrz/job-horizon-backend",
     technologies: [
+      technologies.springBoot,
+      technologies.sqlserver,
+      technologies.docker,
+      technologies.swagger,
+    ],
+  },
+  {
+    title: "Sistema Atenea",
+    description:
+      "Sistema de gestión académica para administrar centros educativos, usuarios, roles y procesos académicos desde una plataforma centralizada.",
+    repositoryUrl: "https://github.com/adogrz/sistema-atenea",
+    technologies: [
+      technologies.react,
       technologies.typescript,
-      technologies.astro,
       technologies.tailwind,
+      technologies.postgresql,
+      technologies.laravel,
     ],
   },
 ];

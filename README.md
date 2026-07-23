@@ -1,45 +1,55 @@
-# Portfolio de Adonay Gutiérrez
+# Portfolio
 
-Sitio estático construido con Astro 7, Tailwind CSS 4 y pnpm. El contenido público está en español y el tema sigue la preferencia del sistema.
+Plantilla de portafolio web personal construida con Astro 7, Tailwind CSS 4 y TypeScript.
 
-## Comandos
+## 🚀 Guía rápida de edición
 
-| Comando                       | Acción                                             |
-| ----------------------------- | -------------------------------------------------- |
-| `pnpm install`                | Instala las dependencias.                          |
-| `pnpm astro dev --background` | Inicia el servidor de desarrollo en segundo plano. |
-| `pnpm astro dev stop`         | Detiene el servidor de desarrollo.                 |
-| `pnpm check`                  | Comprueba tipos y componentes Astro.               |
-| `pnpm build`                  | Genera el sitio estático en `dist/`.               |
-| `pnpm preview`                | Sirve localmente la compilación.                   |
+Toda la información del portafolio se gestiona desde `src/data/`:
 
-## Estructura
+| ¿Qué querés modificar?                                | Archivo a editar                        |
+| ----------------------------------------------------- | --------------------------------------- |
+| **Perfil personal** (Nombre, rol, bio, correo, redes) | `src/data/profile.ts`                   |
+| **Foto de perfil**                                    | `src/assets/adonay.webp`                |
+| **Experiencia laboral**                               | `src/data/experience.ts`                |
+| **Proyectos** (con o sin imagen)                      | `src/data/projects.ts`                  |
+| **Imágenes de proyectos**                             | `src/assets/projects/`                  |
+| **Archivo de CV (PDF)**                               | `public/assets/CV-Gutierrez-Adonay.pdf` |
 
-```text
-src/
-├── assets/       # Imágenes locales
-├── components/   # Componentes Astro e iconos SVG
-├── data/         # Proyectos y tecnologías reutilizables
-├── layouts/      # Documento base y metadatos
-├── pages/        # Rutas públicas
-└── styles/       # Estilos globales y temas
+---
+
+## 🛠️ Comandos útiles
+
+```bash
+# Desarrollo local
+npm run dev
+
+# Validar tipos y componentes
+npm run check
+
+# Formatear todo el código
+npx prettier --write .
+
+# Generar compilación de producción
+npm run build
 ```
 
-## Añadir un proyecto
+---
 
-1. Añade el proyecto en `src/data/projects.ts` y reutiliza las entradas existentes de `technologies`.
-2. Para una tarjeta con captura, guarda e importa la imagen y define `image` y `deploymentUrl`; `repositoryUrl` es opcional.
-3. Para una tarjeta compacta sin imagen, omite `image` y define `repositoryUrl`.
-4. Ejecuta `pnpm check` y `pnpm build`.
+## ➕ Agregar un nuevo proyecto (`src/data/projects.ts`)
 
-## Añadir o reutilizar un logotipo
+### Con captura de pantalla:
 
-Para reutilizar una tecnología, referencia su entrada en `technologies` sin volver a importar el componente.
+1. Guardá la imagen en `src/assets/projects/mi-proyecto.webp`.
+2. Importá la imagen en `src/data/projects.ts` e incluyo `image` y `deploymentUrl`.
 
-Para añadir una marca:
+### Proyecto compacto (solo texto y repo):
 
-1. Copia su SVG desde [SVGL](https://svgl.app) a `src/components/icons/technologies/` con extensión `.astro`.
-2. Conserva el `viewBox`, elimina `width` y `height`, y añade `{...Astro.props}` al elemento `<svg>`.
-3. Importa una sola vez el componente en `src/data/projects.ts` y regístralo en `technologies`.
+1. Omite la propiedad `image` y definí `repositoryUrl`.
 
-SVGL es una herramienta puntual de copia y Starwind no es necesario para el tooltip CSS. Ninguno forma parte de las dependencias de ejecución o desarrollo.
+---
+
+## 🎨 Agregar un nuevo icono de tecnología
+
+1. Descargá el SVG desde [SVGL](https://svgl.app) y guardalo en `src/components/icons/technologies/MiTecnologia.astro`.
+2. Agregale `{...Astro.props}` a la etiqueta `<svg>` y remové `width`/`height`.
+3. Regístralo en el objeto `technologies` dentro de `src/data/projects.ts`.

@@ -8,7 +8,6 @@ interface Props {
     | "copy-check"
     | "code"
     | "download"
-    | "external-link"
     | "github"
     | "linkedin"
     | "link"
@@ -97,12 +96,6 @@ const classes = ["block w-auto shrink-0", className];
       {name === "code" && <path d="m7 8-4 4 4 4m10-8 4 4-4 4M14 4l-4 16" />}
       {name === "download" && (
         <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2M7 11l5 5 5-5M12 4v12" />
-      )}
-      {name === "external-link" && (
-        <>
-          <path d="M12 6H6a3 3 0 0 0-3 3v9a3 3 0 0 0 3 3h9a3 3 0 0 0 3-3v-6" />
-          <path d="M15 3h6v6M10 14 21 3" />
-        </>
       )}
       {name === "link" && (
         <>

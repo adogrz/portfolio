@@ -139,12 +139,6 @@ section[id] {
   background: #dff4e5;
 }
 
-.current-badge {
-  border-color: #ebbf83;
-  color: #60430f;
-  background: #fff2dc;
-}
-
 .section-heading {
   display: flex;
   align-items: center;
@@ -159,12 +153,6 @@ section[id] {
 [data-theme="dark"] .availability-badge {
   border-color: #8bd49c;
   color: #8bd49c;
-  background: #1d252c;
-}
-
-[data-theme="dark"] .current-badge {
-  border-color: #ebbf83;
-  color: #ebbf83;
   background: #1d252c;
 }
 

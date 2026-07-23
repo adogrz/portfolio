@@ -2,10 +2,11 @@ import portrait from "@/assets/adonay.webp";
 
 export const profile = {
   name: "Adonay Gutiérrez",
-  role: "Software Developer",
-  introduction: "apasionado.",
-  location: "De San Salvador, El Salvador.",
-  presentation: "Especializado en crear aplicaciones únicas.",
+  role: "Desarrollador Backend Java",
+  introduction: "y estudiante de Ingeniería en Sistemas Informáticos.",
+  location: "En San Salvador, El Salvador.",
+  presentation:
+    "Desarrollo soluciones web con enfoque backend y experiencia práctica en frontend, infraestructura y despliegues.",
   portrait,
   portraitAlt: "Retrato de Adonay Gutiérrez",
   availability: {

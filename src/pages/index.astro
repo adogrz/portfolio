@@ -1,0 +1,29 @@
+---
+import Contact from "@/components/Contact.astro";
+import Experience from "@/components/Experience.astro";
+import Hero from "@/components/Hero.astro";
+import Projects from "@/components/Projects.astro";
+import Section from "@/components/Section.astro";
+import WaveDivider from "@/components/WaveDivider.astro";
+import { profile } from "@/data/profile";
+import Layout from "@/layouts/Layout.astro";
+
+const title = `${profile.role} en El Salvador | ${profile.name}`;
+const description = `Portfolio de ${profile.name}, ${profile.role} en San Salvador. Experiencia creando aplicaciones web con TypeScript, React, Astro y Tailwind CSS.`;
+---
+
+<Layout {title} {description}>
+  <main id="contenido" class="mx-auto flex max-w-3xl flex-col gap-16 px-5 pt-5">
+    <Hero />
+    <WaveDivider />
+    <Section id="experiencia" title="Experiencia" icon="briefcase">
+      <Experience />
+    </Section>
+    <Section id="proyectos" title="Proyectos" icon="star">
+      <Projects />
+    </Section>
+    <Section id="contacto" title="Contacto" icon="mail">
+      <Contact />
+    </Section>
+  </main>
+</Layout>

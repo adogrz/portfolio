@@ -1,0 +1,79 @@
+---
+import { Image } from "astro:assets";
+import Icon from "@/components/Icon.astro";
+import { profile } from "@/data/profile";
+---
+
+<section
+  class="flex w-full flex-col items-center gap-5 sm:flex-row"
+  aria-labelledby="hero-title"
+>
+  <Image
+    src={profile.portrait}
+    alt={profile.portraitAlt}
+    width={176}
+    height={176}
+    priority
+    class="size-44 shrink-0 rounded-full bg-indigo-100 object-cover shadow-2xl ring-8 ring-slate-300/90 sm:mr-3 dark:bg-gray-700/60 dark:ring-gray-900/70"
+  />
+  <div class="flex min-w-0 flex-col items-center gap-3 sm:items-start">
+    <div class="flex flex-col gap-2">
+      <div class="flex flex-col items-center gap-2 sm:flex-row sm:gap-4">
+        <h1
+          id="hero-title"
+          class="text-center text-4xl font-bold text-balance text-(--heading) sm:text-left"
+        >
+          {profile.name}
+        </h1>
+        {
+          profile.availability.available && (
+            <span class="availability-badge rounded-full border px-2.5 py-1 text-xs font-medium">
+              {profile.availability.label}
+            </span>
+          )
+        }
+      </div>
+      <p
+        class="max-w-xl text-center text-base text-pretty text-(--muted) sm:text-left"
+      >
+        <strong class="font-medium text-(--brand)" translate="no"
+          >{profile.role}</strong
+        >{" "}{profile.introduction}{" "}
+        <span class="font-medium text-(--accent)">{profile.location}</span>{
+          " "
+        }{profile.presentation}
+      </p>
+    </div>
+    <nav
+      aria-label="Perfiles y currículum"
+      class="flex flex-wrap justify-center gap-3 sm:justify-start"
+    >
+      <a
+        class="action-link"
+        href={profile.urls.linkedIn}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Icon name="linkedin" class="h-5" />
+        LinkedIn
+      </a>
+      <a
+        class="action-link"
+        href={profile.urls.github}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Icon name="github" class="h-5" />
+        GitHub
+      </a>
+      <a
+        class="action-link"
+        href={profile.urls.cv}
+        download={profile.cvFileName}
+      >
+        <Icon name="download" class="h-5" />
+        Descargar CV
+      </a>
+    </nav>
+  </div>
+</section>

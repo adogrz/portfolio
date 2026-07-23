@@ -1,0 +1,98 @@
+---
+import { Image } from "astro:assets";
+
+import Icon from "@/components/Icon.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
+import TechnologyTag from "@/components/TechnologyTag.astro";
+import { projects } from "@/data/projects";
+import type { CompactProject, ImageProject } from "@/data/projects";
+
+const screenshotProjects = projects.filter(
+  (project): project is ImageProject => project.image !== undefined,
+);
+const compactProjects = projects.filter(
+  (project): project is CompactProject => project.image === undefined,
+);
+---
+
+{
+  screenshotProjects.map(
+    ({
+      title,
+      description,
+      image,
+      deploymentUrl,
+      repositoryUrl,
+      technologies,
+    }) => {
+      return (
+        <article class="group flex flex-col gap-4 md:flex-row md:gap-6">
+          <div class="w-full md:w-1/2">
+            <a
+              class="flex overflow-hidden rounded-xl bg-(--project-surface) bg-cover bg-center"
+              href={deploymentUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Abrir el proyecto ${title} en una pestaña nueva`}
+            >
+              <Image
+                src={image}
+                alt={`Captura de pantalla del proyecto ${title}`}
+                widths={[360, 540, 720]}
+                sizes="(min-width: 768px) 352px, calc(100vw - 40px)"
+                loading="lazy"
+                class="h-auto w-full translate-x-9 translate-y-9 rounded-lg transition-transform duration-500 group-hover:translate-x-7 group-hover:translate-y-7 motion-reduce:transition-none"
+              />
+            </a>
+          </div>
+          <div class="flex w-full min-w-0 flex-col justify-center gap-2.5 md:w-1/2">
+            <h3 class="text-2xl font-bold text-(--brand)">{title}</h3>
+            <p class="text-base text-pretty text-(--muted)">{description}</p>
+            <ul
+              class="mb-1 flex flex-wrap items-center gap-2"
+              aria-label={`Tecnologías de ${title}`}
+            >
+              {technologies.map((technology) => (
+                <li>
+                  <TechnologyTag technology={technology} />
+                </li>
+              ))}
+            </ul>
+            <footer class="flex flex-wrap justify-start gap-3">
+              {repositoryUrl && (
+                <a
+                  class="action-link"
+                  href={repositoryUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Icon name="code" class="h-5" />
+                  Código
+                </a>
+              )}
+              <a
+                class="action-link"
+                href={deploymentUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icon name="link" class="h-5" />
+                Sitio web
+              </a>
+            </footer>
+          </div>
+        </article>
+      );
+    },
+  )
+}
+
+{
+  compactProjects.length > 0 && (
+    <div class="mt-2 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
+      {compactProjects.map((project) => (
+        <ProjectCard project={project} />
+      ))}
+    </div>
+  )
+}

@@ -11,10 +11,14 @@ interface Props {
 const { id, title, icon, class: className } = Astro.props;
 ---
 
-<section id={id} class:list={["flex w-full flex-col gap-5", className]}>
+<section
+  id={id}
+  aria-labelledby={`${id}-heading`}
+  class:list={["flex w-full flex-col gap-5", className]}
+>
   <div class="section-heading">
     <Icon name={icon} class="h-8" />
-    <h2>{title}</h2>
+    <h2 id={`${id}-heading`}>{title}</h2>
   </div>
   <slot />
 </section>

@@ -7,6 +7,7 @@ import { profile } from "@/data/profile";
   <a
     class="flex min-h-11 min-w-0 flex-1 items-center truncate rounded-lg border border-(--border) bg-(--surface) px-3 py-1.5 text-sm text-(--brand) transition-colors hover:bg-(--surface-hover) sm:text-base"
     href={`mailto:${profile.email}`}
+    aria-label={`Enviar correo a ${profile.name}`}
   >
     {profile.email}
   </a>
@@ -101,8 +102,7 @@ import { profile } from "@/data/profile";
     text-align: center;
     opacity: 0;
     pointer-events: none;
-    translate: -50% 0;
-    transform: translateY(0.25rem);
+    transform: translate(-50%, 0.25rem);
     transition:
       opacity 150ms ease,
       transform 150ms ease;
@@ -111,7 +111,7 @@ import { profile } from "@/data/profile";
   .contact-action:last-child .contact-tooltip {
     right: 0;
     left: auto;
-    translate: 0;
+    transform: translate(0, 0.25rem);
   }
 
   :global(.copy-icon-default),
@@ -160,13 +160,23 @@ import { profile } from "@/data/profile";
   .contact-action:has(:focus-visible):not(:has([data-copied="true"]))
     .contact-tooltip {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate(-50%, 0);
+  }
+
+  .contact-action:last-child:has(:focus-visible):not(:has([data-copied="true"]))
+    .contact-tooltip {
+    transform: translate(0, 0);
   }
 
   @media (hover: hover) {
     .contact-action:not(:has([data-copied="true"])):hover .contact-tooltip {
       opacity: 1;
-      transform: translateY(0);
+      transform: translate(-50%, 0);
+    }
+
+    .contact-action:last-child:not(:has([data-copied="true"])):hover
+      .contact-tooltip {
+      transform: translate(0, 0);
     }
   }
 

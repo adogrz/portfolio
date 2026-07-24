@@ -33,7 +33,7 @@ const compactProjects = projects.filter(
               href={deploymentUrl}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`Abrir el proyecto ${title} en una pestaña nueva`}
+              aria-label={`Ver sitio web de ${title}`}
             >
               <Image
                 src={image}
@@ -54,7 +54,7 @@ const compactProjects = projects.filter(
             >
               {technologies.map((technology) => (
                 <li>
-                  <TechnologyTag technology={technology} />
+                  <TechnologyTag technology={technology} focusable={false} />
                 </li>
               ))}
             </ul>
@@ -65,6 +65,7 @@ const compactProjects = projects.filter(
                   href={repositoryUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={`Ver código fuente de ${title}`}
                 >
                   <Icon name="code" class="h-5" />
                   Código
@@ -75,6 +76,7 @@ const compactProjects = projects.filter(
                 href={deploymentUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`Ver sitio web de ${title}`}
               >
                 <Icon name="link" class="h-5" />
                 Sitio web

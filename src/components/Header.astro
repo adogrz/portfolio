@@ -49,8 +49,11 @@ import { profile } from "@/data/profile";
   const colorScheme = matchMedia("(prefers-color-scheme: dark)");
 
   const updateProfile = () => {
-    if (profileSummary)
-      profileSummary.dataset.visible = String(window.scrollY > 250);
+    if (profileSummary) {
+      const isVisible = window.scrollY > 250;
+      profileSummary.dataset.visible = String(isVisible);
+      profileSummary.setAttribute("aria-hidden", String(!isVisible));
+    }
   };
 
   const applyTheme = (theme: "light" | "dark") => {
